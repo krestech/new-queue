@@ -75,7 +75,7 @@ function App() {
     setInterval(() => {
       const parsed = queryString.parse(window.location.search);
       console.log(parsed);
-      let outlet = (parsed.outlet_id ? parsed.outlet_id : "5cde8c85a8f16c176722793c");
+      let outlet = (parsed.outlet_id ? parsed.outlet_id : "5ab0cb7f5429730ab48d91f9");
       getOrderData(outlet);   
       console.log(outlet)    
     }, 5000);
@@ -216,9 +216,9 @@ function App() {
         <PoseGroup>
         { orderManaged.map((x, d) => {
           return (
-            <OrderPose key={d} style={{padding: 10, backgroundColor: (x.order_status_id === "5a055f4e8f46003610d9659b"  ? '#49b665' : '#fff'), borderRadius: 5, marginBottom: 5, display: "flex", flexDirection: "crow"}}>
-              <div style={{fontSize: 20, marginRight: 20, lineHeight: "30px"}}>#{x.order_number}</div>
-              <div style={{fontSize: 30, fontWeight: "bold", lineHeight: "30px"}}>{x.user.first_name} {x.user.last_name}</div>
+            <OrderPose key={d} style={{padding: 10, flex: 1, backgroundColor: (x.order_status_id === "5a055f4e8f46003610d9659b"  ? '#49b665' : '#fff'), borderRadius: 5, marginBottom: 5, display: "flex", flexDirection: "row", whiteSpace:"nowrap", overflow: "hidden"}}>
+              <div style={{fontSize: 20, marginRight: 20, lineHeight: "30px"}}>#{x.order_number.substring(x.order_number.length - 5, x.order_number.length)}</div>
+              <div style={{fontSize: 23, fontWeight: "bold", lineHeight: "30px"}}>{x.user.first_name} {x.user.last_name}</div>
             </OrderPose>
           )
         })}
